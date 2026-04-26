@@ -42,8 +42,9 @@ export function Textarea({ label, ...props }) {
 
 export function Modal({ open, onClose, title, children }) {
   if (!open) return null;
+
   return (
-    <div className={styles.overlay} onClick={e => e.target === e.currentTarget && onClose()}>
+    <div className={styles.overlay}>
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
           <span className={styles.modalTitle}>{title}</span>

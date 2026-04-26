@@ -14,6 +14,17 @@ function eMesAtivo(freq, mes) {
   return freq === 'mensal' || [3,6,9,12].includes(mes);
 }
 
+// Máscara de CNPJ
+function mascaraCNPJ(valor) {
+  return valor
+    .replace(/\D/g, '')
+    .slice(0, 14)
+    .replace(/^(\d{2})(\d)/, '$1.$2')
+    .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
+    .replace(/\.(\d{3})(\d)/, '.$1/$2')
+    .replace(/(\d{4})(\d)/, '$1-$2');
+}
+
 export default function Dashboard() {
   const { usuario, logout } = useAuth();
   const [mes, setMes]       = useState(hoje.getMonth() + 1);
@@ -23,11 +34,10 @@ export default function Dashboard() {
   const [aba, setAba]       = useState('todas');
   const [filtroFreq, setFiltroFreq] = useState('todas');
   const [busca, setBusca]   = useState('');
-  const [modalEmpresa, setModalEmpresa] = useState(null); // null | 'nova' | empresa obj
+  const [modalEmpresa, setModalEmpresa] = useState(null);
   const [modalPendentes, setModalPendentes] = useState(false);
   const [salvando, setSalvando] = useState({});
 
-  // Anos disponíveis no select
   const anos = [];
   for (let a = hoje.getFullYear() - 2; a <= hoje.getFullYear() + 1; a++) anos.push(a);
 
@@ -69,6 +79,13 @@ export default function Dashboard() {
 
   // Filtros
   const lista = periodos.filter(p => {
+    // "Todas" mostra todas as empresas, independente do ciclo
+    if (aba === 'todas') {
+      if (filtroFreq !== 'todas' && p.frequencia !== filtroFreq) return false;
+      if (busca && !p.nome.toLowerCase().includes(busca.toLowerCase())) return false;
+      return true;
+    }
+    // Outras abas respeitam o ciclo ativo
     if (!eMesAtivo(p.frequencia, mes) && aba !== 'trimestrais') return false;
     if (filtroFreq !== 'todas' && p.frequencia !== filtroFreq) return false;
     if (busca && !p.nome.toLowerCase().includes(busca.toLowerCase())) return false;
@@ -78,7 +95,7 @@ export default function Dashboard() {
     return true;
   });
 
-  // Métricas
+  // Métricas — sempre baseadas nas empresas do ciclo ativo
   const ativos = periodos.filter(p => eMesAtivo(p.frequencia, mes));
   const metrics = {
     total:     ativos.length,
@@ -284,6 +301,12 @@ function ModalEmpresa({ open, empresa, onClose, onSaved }) {
 
   const set = k => e => setForm(f => ({ ...f, [k]: e.target.value }));
 
+  // Máscara CNPJ
+  function handleCNPJ(e) {
+    const mascara = mascaraCNPJ(e.target.value);
+    setForm(f => ({ ...f, cnpj: mascara }));
+  }
+
   async function salvar(e) {
     e.preventDefault();
     if (!form.nome.trim()) { toast.error('Nome é obrigatório'); return; }
@@ -312,8 +335,14 @@ function ModalEmpresa({ open, empresa, onClose, onSaved }) {
       <form onSubmit={salvar} style={{ padding: '16px 20px 20px', display: 'flex', flexDirection: 'column', gap: 14 }}>
         <Input label="Nome da empresa" placeholder="Razão social ou nome fantasia"
           value={form.nome} onChange={set('nome')} required />
-        <Input label="CNPJ (opcional)" placeholder="00.000.000/0001-00"
-          value={form.cnpj} onChange={set('cnpj')} />
+        <Input
+          label="CNPJ (opcional)"
+          placeholder="00.000.000/0001-00"
+          value={form.cnpj}
+          onChange={handleCNPJ}
+          maxLength={18}
+          inputMode="numeric"
+        />
         <Select label="Frequência contábil" value={form.frequencia} onChange={set('frequencia')}>
           <option value="mensal">Mensal</option>
           <option value="trimestral">Trimestral</option>
