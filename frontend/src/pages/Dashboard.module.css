@@ -10,111 +10,101 @@
 .topbarRight { display: flex; align-items: center; gap: 12px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
 .topbarTitle { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; }
-.topbarEsc {
-  font-size: 12px; color: var(--text-2);
-  background: var(--surface-2); padding: 2px 8px; border-radius: 99px;
-  border: 0.5px solid var(--border);
-}
+.topbarEsc { font-size: 12px; color: var(--text-2); background: var(--surface-2); padding: 2px 8px; border-radius: 99px; border: 0.5px solid var(--border); }
 .topbarUser { font-size: 13px; color: var(--text-2); }
-.logoutBtn {
-  font-size: 12px; padding: 4px 10px; border-radius: var(--radius);
-  border: 0.5px solid var(--border-md); background: transparent;
-  color: var(--text-2); cursor: pointer;
-}
+.logoutBtn { font-size: 12px; padding: 4px 10px; border-radius: var(--radius); border: 0.5px solid var(--border-md); background: transparent; color: var(--text-2); cursor: pointer; }
 .logoutBtn:hover { background: var(--surface-2); color: var(--text); }
 
-.main { max-width: 1100px; margin: 0 auto; padding: 24px 24px 48px; width: 100%; }
+.main { max-width: 1200px; margin: 0 auto; padding: 24px 24px 48px; width: 100%; }
 
-.header {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  flex-wrap: wrap; gap: 16px; margin-bottom: 20px;
-}
+.header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
 .pageTitle { font-size: 22px; font-weight: 700; letter-spacing: -0.4px; }
-.pageSub   { font-size: 13px; color: var(--text-2); margin-top: 2px; }
+.pageSub { font-size: 13px; color: var(--text-2); margin-top: 2px; }
 .headerControls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.sel { font-size: 13px; padding: 7px 10px; border-radius: var(--radius); border: 0.5px solid var(--border-md); background: var(--surface); color: var(--text); cursor: pointer; font-family: inherit; }
 
-.sel {
-  font-size: 13px; padding: 7px 10px; border-radius: var(--radius);
-  border: 0.5px solid var(--border-md); background: var(--surface);
-  color: var(--text); cursor: pointer; font-family: inherit;
-}
-
-.metrics {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 10px; margin-bottom: 20px;
-}
-.metric {
-  background: var(--surface-2); border-radius: var(--radius); padding: 14px 16px;
-}
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 20px; }
+.metric { background: var(--surface-2); border-radius: var(--radius); padding: 14px 16px; }
 .metricLabel { font-size: 11px; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
 .metricValue { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
 .green { color: var(--green); }
 .amber { color: var(--amber); }
-.red   { color: var(--red);   }
+.red   { color: var(--red); }
 
-.tabs {
-  display: flex; border-bottom: 0.5px solid var(--border);
-  margin-bottom: 14px; overflow-x: auto;
-}
-.tab {
-  font-size: 13px; padding: 9px 18px; cursor: pointer;
-  color: var(--text-2); border: none; background: none;
-  border-bottom: 2px solid transparent; margin-bottom: -0.5px;
-  white-space: nowrap; font-family: inherit;
-}
+.tabs { display: flex; border-bottom: 0.5px solid var(--border); margin-bottom: 14px; overflow-x: auto; }
+.tab { font-size: 13px; padding: 9px 18px; cursor: pointer; color: var(--text-2); border: none; background: none; border-bottom: 2px solid transparent; margin-bottom: -0.5px; white-space: nowrap; font-family: inherit; }
 .tabActive { color: var(--text); border-bottom-color: var(--green); font-weight: 500; }
 .tab:hover:not(.tabActive) { color: var(--text); }
 
-.filterBar { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
-.searchWrap { flex: 1; min-width: 180px; position: relative; }
+.filterBar { display: flex; gap: 8px; margin-bottom: 16px; }
+.searchWrap { flex: 1; max-width: 320px; position: relative; }
 .searchIcon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); opacity: 0.4; }
-.searchInput {
-  width: 100%; font-size: 13px; padding: 7px 10px 7px 30px;
-  border-radius: var(--radius); border: 0.5px solid var(--border-md);
-  background: var(--surface); color: var(--text); outline: none;
-}
+.searchInput { width: 100%; font-size: 13px; padding: 7px 10px 7px 30px; border-radius: var(--radius); border: 0.5px solid var(--border-md); background: var(--surface); color: var(--text); outline: none; }
 .searchInput:focus { border-color: var(--green); box-shadow: 0 0 0 2px rgba(29,158,117,0.15); }
-.filterBtn {
-  font-size: 12px; padding: 5px 12px; border-radius: 99px;
-  border: 0.5px solid var(--border-md); background: var(--surface);
-  color: var(--text-2); cursor: pointer; font-family: inherit;
-}
-.filterActive { background: var(--green-bg); color: var(--green-text); border-color: var(--green); }
-.filterBtn:hover:not(.filterActive) { background: var(--surface-2); }
 
-.tableCard {
+/* ─── Cards grid ─── */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+
+.card {
   background: var(--surface); border: 0.5px solid var(--border);
-  border-radius: var(--radius-lg); overflow: hidden;
+  border-radius: var(--radius-lg); padding: 16px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: box-shadow 0.15s;
 }
-.table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.table th {
-  background: var(--surface-2); font-weight: 500; font-size: 11px;
-  color: var(--text-2); text-align: left; padding: 10px 14px;
-  border-bottom: 0.5px solid var(--border); text-transform: uppercase; letter-spacing: 0.4px;
-}
-.table td {
-  padding: 11px 14px; border-bottom: 0.5px solid var(--border);
-  color: var(--text); vertical-align: middle;
-}
-.table tbody tr:last-child td { border-bottom: none; }
-.table tbody tr:hover td { background: var(--surface-2); }
-.tdNome { font-weight: 500; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.tdObs  { font-size: 12px; color: var(--text-2); max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: default; }
-.semObs { font-style: italic; color: var(--text-3); }
-.editBtn {
-  font-size: 12px; padding: 4px 10px; border-radius: var(--radius);
-  border: 0.5px solid var(--border); background: transparent;
-  color: var(--text-2); cursor: pointer; font-family: inherit;
-}
-.editBtn:hover { background: var(--surface-2); color: var(--text); }
+.card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+.cardInativo { opacity: 0.6; }
 
-.loading, .empty {
-  text-align: center; padding: 3rem 1rem;
-  color: var(--text-3); font-size: 13px;
-}
+.cardHeader { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.cardNome { font-size: 14px; font-weight: 600; letter-spacing: -0.2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.cardObs { font-size: 11px; color: var(--text-2); line-height: 1.5; background: var(--surface-2); padding: 6px 8px; border-radius: 6px; }
 
-.pendList {
-  background: var(--surface-2); border-radius: var(--radius);
-  padding: 10px 14px; max-height: 200px; overflow-y: auto;
-  font-size: 13px; color: var(--text-2); line-height: 2;
+.cardSection {}
+.cardSectionTitle { font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
+.cardLoading { font-size: 12px; color: var(--text-3); }
+.cardSemBancos { font-size: 12px; color: var(--text-3); }
+.linkBtn { background: none; border: none; color: var(--green); cursor: pointer; font-size: 12px; text-decoration: underline; padding: 0; font-family: inherit; }
+
+.bancosList { display: flex; flex-direction: column; gap: 4px; }
+.bancoItem { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+.bancoNome { font-size: 12px; color: var(--text); }
+.bancoStatus { font-size: 11px; font-weight: 500; }
+.bancoOk   { color: var(--green); }
+.bancoPend { color: var(--amber); }
+.bancosResume { font-size: 11px; color: var(--text-3); margin-top: 4px; text-align: right; }
+
+.contabilStatus { font-size: 12px; padding: 6px 10px; border-radius: 6px; }
+.contabilBloqueado { background: var(--surface-2); color: var(--text-2); }
+
+.contabilBtn {
+  width: 100%; font-size: 12px; padding: 8px 12px; border-radius: var(--radius);
+  border: 0.5px solid; cursor: pointer; font-family: inherit; font-weight: 500;
+  transition: all 0.15s; text-align: left;
 }
+.contabilAberto { background: var(--surface-2); border-color: var(--border-md); color: var(--text-2); }
+.contabilAberto:hover { background: var(--green-bg); border-color: var(--green); color: var(--green-text); }
+.contabilFeito { background: var(--green-bg); border-color: var(--green); color: var(--green-text); }
+.contabilFeito:hover { background: var(--red-bg); border-color: var(--red); color: var(--red-text); }
+
+.cardFooter { display: flex; gap: 6px; margin-top: auto; padding-top: 4px; border-top: 0.5px solid var(--border); }
+
+/* ─── Modal extratos ─── */
+.extratoItem { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: var(--surface-2); border-radius: var(--radius); }
+.extratoInfo { display: flex; gap: 10px; align-items: center; }
+.extratoToggle {
+  font-size: 12px; padding: 5px 12px; border-radius: 99px; border: 0.5px solid;
+  cursor: pointer; font-family: inherit; font-weight: 500; white-space: nowrap;
+  transition: all 0.15s;
+}
+.extratoOn  { background: var(--green-bg); border-color: var(--green); color: var(--green-text); }
+.extratoOff { background: var(--surface); border-color: var(--border-md); color: var(--text-2); }
+.extratoOff:hover { border-color: var(--green); color: var(--green); }
+
+/* ─── Modal bancos ─── */
+.contaItem { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: var(--surface-2); border-radius: var(--radius); gap: 8px; }
+.contaInativa { opacity: 0.6; }
+.contaInfo { display: flex; flex-direction: column; gap: 2px; flex: 1; overflow: hidden; }
+
+/* ─── Pendentes ─── */
+.pendList { background: var(--surface-2); border-radius: var(--radius); padding: 10px 14px; max-height: 200px; overflow-y: auto; font-size: 13px; color: var(--text-2); }
+
+.loading, .empty { text-align: center; padding: 3rem 1rem; color: var(--text-3); font-size: 13px; }
