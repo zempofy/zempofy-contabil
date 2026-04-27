@@ -9,17 +9,14 @@
 }
 .topbarLeft  { display: flex; align-items: center; gap: 12px; }
 .topbarRight { display: flex; align-items: center; gap: 10px; }
-
-.logo { font-size: 15px; font-weight: 600; color: var(--text); letter-spacing: -0.3px; }
+.logo { font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
 .logoAccent { color: var(--primary); }
-
 .divider { width: 1px; height: 16px; background: var(--border-md); }
 .pageLabel { font-size: 13px; color: var(--text-2); }
-
 .topbarEsc {
   font-size: 11px; color: var(--text-2);
   background: var(--surface-2); padding: 2px 9px;
-  border-radius: 99px; border: 0.5px solid var(--border);
+  border-radius: 99px; border: 0.5px solid var(--border-md);
 }
 .topbarUser { font-size: 13px; color: var(--text-2); }
 .logoutBtn {
@@ -32,13 +29,12 @@
 .sel {
   font-size: 12px; padding: 6px 8px; border-radius: var(--radius);
   border: 0.5px solid var(--border-md); background: var(--surface-2);
-  color: var(--text); cursor: pointer; font-family: inherit;
+  color: var(--text); cursor: pointer;
 }
 .sel:focus { outline: none; border-color: var(--primary); }
 
 /* ─── Main ─── */
 .main { max-width: 1200px; margin: 0 auto; padding: 24px 24px 48px; width: 100%; }
-
 .header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
 .pageTitle { font-size: 22px; font-weight: 700; letter-spacing: -0.4px; color: var(--text); }
 .pageSub { font-size: 13px; color: var(--text-2); margin-top: 2px; }
@@ -47,7 +43,7 @@
 /* ─── Métricas ─── */
 .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 8px; margin-bottom: 20px; }
 .metric { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
-.metricLabel { font-size: 10px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.metricLabel { font-size: 10px; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
 .metricValue { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); }
 .blue  { color: var(--primary-light); }
 .green { color: var(--success); }
@@ -68,16 +64,16 @@
 /* ─── Filtros ─── */
 .filterBar { display: flex; gap: 8px; margin-bottom: 16px; align-items: center; }
 .searchWrap { flex: 1; max-width: 300px; position: relative; }
-.searchIcon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); opacity: 0.3; color: var(--text); }
+.searchIcon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); opacity: 0.4; color: var(--text); }
 .searchInput {
   width: 100%; font-size: 12px; padding: 7px 10px 7px 30px;
   border-radius: var(--radius); border: 0.5px solid var(--border-md);
   background: var(--surface-2); color: var(--text); outline: none;
 }
-.searchInput::placeholder { color: var(--text-3); }
+.searchInput::placeholder { color: var(--text-2); }
 .searchInput:focus { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary-dim); }
 
-/* ─── Cards grid ─── */
+/* ─── Cards ─── */
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 10px; }
 
 .card {
@@ -91,15 +87,29 @@
 
 .cardHeader { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
 .cardNome { font-size: 13px; font-weight: 600; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
-.cardObs { font-size: 11px; color: var(--text-3); background: var(--surface-2); padding: 5px 8px; border-radius: 6px; line-height: 1.4; }
+
+/* Observações — mais visível */
+.cardObs {
+  font-size: 11px; color: var(--text-2);
+  background: var(--surface-2); padding: 5px 8px;
+  border-radius: 6px; line-height: 1.4;
+  border-left: 2px solid var(--primary-border);
+}
 
 .cardSection {}
-.sectionLabel { font-size: 10px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-.cardLoading { font-size: 11px; color: var(--text-3); }
-.cardSemBancos { font-size: 11px; color: var(--text-3); }
+
+/* Label das seções — mais visível */
+.sectionLabel {
+  font-size: 10px; color: var(--text-2);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.cardLoading { font-size: 11px; color: var(--text-2); }
+.cardSemBancos { font-size: 11px; color: var(--text-2); }
 .linkBtn { background: none; border: none; color: var(--primary-light); cursor: pointer; font-size: 11px; text-decoration: underline; padding: 0; font-family: inherit; }
 
-/* Bancos no card */
+/* Bancos */
 .bancosList { display: flex; flex-direction: column; gap: 3px; }
 .bancoItem {
   display: flex; align-items: center; justify-content: space-between;
@@ -109,20 +119,23 @@
 }
 .bancoItem:hover { border-color: var(--border-md); }
 .bancoItem.recebido { background: var(--primary-dim); border-color: var(--primary-border); }
-.bancoNome { font-size: 11px; color: var(--text-2); }
+
+/* Nome do banco — mais visível */
+.bancoNome { font-size: 12px; color: var(--text); font-weight: 500; }
 .bancoItem.recebido .bancoNome { color: var(--primary-light); }
+
 .bancoDot { width: 7px; height: 7px; border-radius: 50%; background: var(--surface-3); flex-shrink: 0; transition: all 0.15s; }
 .bancoItem.recebido .bancoDot { background: var(--primary); box-shadow: 0 0 6px var(--primary-dim); }
-.bancosResumo { font-size: 10px; color: var(--text-3); text-align: right; margin-top: 3px; }
+.bancosResumo { font-size: 10px; color: var(--text-2); text-align: right; margin-top: 3px; }
 
 /* Contábil */
 .contabilBloqueado {
   font-size: 11px; padding: 7px 10px; border-radius: 6px;
-  background: var(--surface-2); color: var(--text-3);
-  border: 0.5px solid var(--border);
+  background: var(--surface-2); color: var(--text-2);
+  border: 0.5px solid var(--border-md);
 }
 .contabilBtn {
-  width: 100%; font-size: 11px; font-weight: 500; padding: 8px 10px; border-radius: 6px;
+  width: 100%; font-size: 12px; font-weight: 500; padding: 8px 10px; border-radius: 6px;
   border: 0.5px solid var(--border-md); cursor: pointer; font-family: inherit;
   background: var(--surface-2); color: var(--text-2); text-align: left;
   transition: all 0.15s;
@@ -159,23 +172,23 @@
 .contaInativa { opacity: 0.5; }
 .contaInfo { display: flex; flex-direction: column; gap: 2px; flex: 1; overflow: hidden; }
 
-/* ─── Toast desfazer ─── */
+/* ─── Toast ─── */
 .toast {
   position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
   background: var(--surface); border: 0.5px solid var(--border-md);
   color: var(--text); font-size: 12px; padding: 10px 16px; border-radius: var(--radius-lg);
   display: none; align-items: center; gap: 14px; z-index: 300; white-space: nowrap;
   box-shadow: 0 4px 24px rgba(0,0,0,0.5);
-  animation: slideUp 0.2s ease;
 }
 .toast.show { display: flex; }
 .toastUndo { background: none; border: none; color: var(--primary-light); cursor: pointer; font-size: 12px; font-family: inherit; font-weight: 500; }
 .toastUndo:hover { color: var(--primary); }
 
 /* ─── Pendentes ─── */
-.pendList { background: var(--surface-2); border-radius: var(--radius); padding: 10px 14px; max-height: 220px; overflow-y: auto; font-size: 13px; color: var(--text-2); }
+.pendList {
+  background: var(--surface-2); border-radius: var(--radius);
+  padding: 10px 14px; max-height: 220px; overflow-y: auto;
+  font-size: 13px; color: var(--text);
+}
 
-/* ─── Estados ─── */
-.loading, .empty { text-align: center; padding: 3rem 1rem; color: var(--text-3); font-size: 13px; }
-
-@keyframes slideUp { from { transform: translateX(-50%) translateY(8px); opacity: 0; } to { transform: translateX(-50%) translateY(0); opacity: 1; } }
+.loading, .empty { text-align: center; padding: 3rem 1rem; color: var(--text-2); font-size: 13px; }
