@@ -19,24 +19,22 @@ export default function Login() {
       if (!usuario.escritorio) navigate('/escritorio');
       else navigate('/');
     } catch (err) {
-      toast.error(err.response?.data?.error || 'Erro ao entrar');
-    } finally {
-      setLoading(false);
-    }
+      toast.error(err.response?.data?.error || 'E-mail ou senha incorretos');
+    } finally { setLoading(false); }
   }
 
   return (
     <div className={styles.page}>
       <div className={styles.card}>
-        <div className={styles.logo}>📊</div>
-        <h1 className={styles.title}>Controle Contábil</h1>
+        <div className={styles.logo}>ZEM<span className={styles.logoAccent}>POFY</span></div>
+        <h1 className={styles.title}>Contábil</h1>
         <p className={styles.sub}>Entre na sua conta</p>
         <form onSubmit={handleSubmit} className={styles.form}>
           <Input label="E-mail" type="email" placeholder="voce@escritorio.com"
             value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} required />
           <Input label="Senha" type="password" placeholder="••••••••"
             value={form.senha} onChange={e => setForm(f => ({ ...f, senha: e.target.value }))} required />
-          <Btn variant="primary" size="lg" loading={loading} type="submit" style={{ width: '100%', marginTop: 4 }}>
+          <Btn variant="primary" size="lg" loading={loading} type="submit" style={{ width:'100%', marginTop:4 }}>
             Entrar
           </Btn>
         </form>

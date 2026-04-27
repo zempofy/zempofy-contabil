@@ -47,32 +47,26 @@ export default function Escritorio() {
   return (
     <div className={styles.page}>
       <div className={styles.card}>
-        <div className={styles.logo}>🏢</div>
+        <div className={styles.logo}>ZEM<span className={styles.logoAccent}>POFY</span></div>
         <h1 className={styles.title}>Configurar escritório</h1>
         <p className={styles.sub}>Crie um escritório ou entre em um existente com o código</p>
-
         <div className={styles.tabs}>
-          <button className={`${styles.tab} ${aba === 'criar' ? styles.tabActive : ''}`} onClick={() => setAba('criar')}>Criar escritório</button>
-          <button className={`${styles.tab} ${aba === 'entrar' ? styles.tabActive : ''}`} onClick={() => setAba('entrar')}>Entrar em um</button>
+          <button className={`${styles.tab} ${aba==='criar'?styles.tabActive:''}`} onClick={() => setAba('criar')}>Criar escritório</button>
+          <button className={`${styles.tab} ${aba==='entrar'?styles.tabActive:''}`} onClick={() => setAba('entrar')}>Entrar em um</button>
         </div>
-
         {aba === 'criar' ? (
           <form onSubmit={criar} className={styles.form}>
-            <Input label="Nome do escritório" placeholder="Ex: Contábil Silva & Associados"
+            <Input label="Nome do escritório" placeholder="Ex: Silva Contabilidade"
               value={nome} onChange={e => setNome(e.target.value)} required />
-            <p className={styles.hint}>Após criar, compartilhe o código gerado com sua equipe para eles entrarem.</p>
-            <Btn variant="primary" size="lg" loading={loading} type="submit" style={{ width: '100%' }}>
-              Criar escritório
-            </Btn>
+            <p className={styles.hint}>Após criar, compartilhe o código gerado com sua equipe.</p>
+            <Btn variant="primary" size="lg" loading={loading} type="submit" style={{ width:'100%' }}>Criar escritório</Btn>
           </form>
         ) : (
           <form onSubmit={entrar} className={styles.form}>
-            <Input label="Código do escritório" placeholder="Ex: contabil-silva-e-associados"
+            <Input label="Código do escritório" placeholder="Ex: silva-contabilidade"
               value={slug} onChange={e => setSlug(e.target.value)} required />
             <p className={styles.hint}>Peça o código para o administrador do seu escritório.</p>
-            <Btn variant="primary" size="lg" loading={loading} type="submit" style={{ width: '100%' }}>
-              Entrar no escritório
-            </Btn>
+            <Btn variant="primary" size="lg" loading={loading} type="submit" style={{ width:'100%' }}>Entrar no escritório</Btn>
           </form>
         )}
       </div>

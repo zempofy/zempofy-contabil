@@ -20,9 +20,7 @@ export default function Register() {
       navigate('/escritorio');
     } catch (err) {
       toast.error(err.response?.data?.error || 'Erro ao cadastrar');
-    } finally {
-      setLoading(false);
-    }
+    } finally { setLoading(false); }
   }
 
   const set = k => e => setForm(f => ({ ...f, [k]: e.target.value }));
@@ -30,14 +28,14 @@ export default function Register() {
   return (
     <div className={styles.page}>
       <div className={styles.card}>
-        <div className={styles.logo}>📊</div>
+        <div className={styles.logo}>ZEM<span className={styles.logoAccent}>POFY</span></div>
         <h1 className={styles.title}>Criar conta</h1>
         <p className={styles.sub}>Comece a organizar seu escritório</p>
         <form onSubmit={handleSubmit} className={styles.form}>
           <Input label="Nome completo" placeholder="João Silva" value={form.nome} onChange={set('nome')} required />
           <Input label="E-mail" type="email" placeholder="voce@escritorio.com" value={form.email} onChange={set('email')} required />
           <Input label="Senha" type="password" placeholder="Mínimo 6 caracteres" value={form.senha} onChange={set('senha')} required />
-          <Btn variant="primary" size="lg" loading={loading} type="submit" style={{ width: '100%', marginTop: 4 }}>
+          <Btn variant="primary" size="lg" loading={loading} type="submit" style={{ width:'100%', marginTop:4 }}>
             Criar conta
           </Btn>
         </form>
